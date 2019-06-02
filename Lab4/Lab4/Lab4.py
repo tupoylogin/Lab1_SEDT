@@ -37,11 +37,8 @@ class RozetkaSearch(unittest.TestCase):
         cart_page = page.CartPage(self.driver)
         cart_page.to_checkout()
         assert cart_page.is_price_valid(price), "Invalid price"
-        print("Her")
         checkout_page = page.CheckoutPage(self.driver)
-        print("Here1")
-        checkout_page.name = "Иван"
-        print("There")
+        checkout_page.name = "Иван Иванофф"
         checkout_page.mail = "rulon_oboev@gmail.com"
         checkout_page.phone = "+380446666666"
         checkout_page.checkout()
