@@ -1,6 +1,7 @@
 import unittest
 from selenium import webdriver
 import page
+from selenium.webdriver.common.by import By
 
 class RozetkaSearch(unittest.TestCase):
     """A sample test class to show how page object works"""
@@ -12,7 +13,7 @@ class RozetkaSearch(unittest.TestCase):
 
     def test_search_in_rozetka(self):
         """
-        Tests rozetka search feature. Searches for the word "pycon" then verified that some results show up.
+        Tests rozetka search feature. Searches for the word "----" then verified that some results show up.
         Note that it does not look for any particular text in search results page. This test verifies that
         the results were not empty.
         """
@@ -21,7 +22,7 @@ class RozetkaSearch(unittest.TestCase):
         main_page = page.MainPage(self.driver)
         #Checks if the word "rozetka" is in title
         assert main_page.is_title_matches(), "rozetka,com.ua title doesn't match."
-        #Sets the text of search textbox to "pycon"
+        #Sets the text of search textbox to "----"
         main_page.search_text_element = "диван"
         main_page.click_go_button()
         search_results_page = page.SearchResultsPage(self.driver)
@@ -41,6 +42,8 @@ class RozetkaSearch(unittest.TestCase):
         checkout_page.name = "Иван Иванофф"
         checkout_page.mail = "rulon_oboev@gmail.com"
         checkout_page.phone = "+380446666666"
+        #self.driver.find_element_by_xpath('//div[@class=\"check-f-i-field\"]/span/button').click()
+
         checkout_page.checkout()
 
     def tearDown(self):

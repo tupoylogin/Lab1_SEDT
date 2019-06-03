@@ -99,13 +99,17 @@ class CheckoutPage(BasePage):
     phone = PhoneElement()
 
     def checkout(self):
-        WebDriverWait(self.driver, 250).until(EC.presence_of_element_located(ContactPageLocators.NXT_BUTTON))
-        element = self.driver.find_element(*ContactPageLocators.NXT_BUTTON)
-        element.click()
+
+        #element = WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable(ContactPageLocators.NXT_BUTTON))
+        element = self.driver.find_element(*ContactPageLocators.NXT_BUTTON).click()
+        
         radio1=self.driver.find_element(*DeliveryPageLocators.RADIO_DELIVERY)
-        radio1.click()
-        radio2=self.driver.find_element(*DeliveryPageLocators.RADIO_SUBDELIVERY)
+        if not (radio1.is_selected()):
+            radio1.click()
+        WebDriverWait(self.driver, 20).until(self.driver.find_element(*DeliveryPageLocators.RADIO_SUBDELIVERY))
+        radio2=self.driver.find_element(*DeliveryPageLocators.RADIO_SUBDELIVERY).find_element_by_xpath('.//a')
         radio2.click()
+        list = self.driver.find_element(*DeliveryPageLocators.RADIO_SUBDELIVERY).find_element_by_xpath('.//div/div[2]/ul/li[1]/a').click()
         purchase = self.driver.find_element(*DeliveryPageLocators.PURCHASE_BUTTON)
         purchase.click()
 

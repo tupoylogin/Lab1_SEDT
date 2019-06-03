@@ -24,13 +24,13 @@ class CartPageLocators(object):
 
 class ContactPageLocators(object):
     NAME = (By.CSS_SELECTOR,'#reciever_name')
-    #LOCALITY = (By.ID,'suugest_locality')
+    LOCALITY = (By.ID,'suugest_locality')
     PHONE = (By.CSS_SELECTOR,'#reciever_phone')
     MAIL = (By.CSS_SELECTOR,'#reciever_email')
-    NXT_BUTTON = (By.XPATH,'//button[@name=\"next_step\"]')
+    NXT_BUTTON = (By.XPATH,'//div[@class=\"check-f-i-field\"]/span/button')
     FORM_LOADED = (By.XPATH,'//form[@id=\"checkout_form\"]')
 
 class DeliveryPageLocators(object):
-    RADIO_DELIVERY=(By.XPATH,'//label[@name=\"pickups_1\"]/input')
-    RADIO_SUBDELIVERY=(By.XPATH,'//label[@class=\"check-address-label\"]/input')
+    RADIO_DELIVERY=(By.XPATH,'//label[@name=\"pickups_5\"]/input')
+    RADIO_SUBDELIVERY=(By.XPATH,'//div[@name=\"select_block_pickups\"]')
     PURCHASE_BUTTON = (By.ID, 'make-order')
