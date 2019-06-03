@@ -103,10 +103,10 @@ class CheckoutPage(BasePage):
         #element = WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable(ContactPageLocators.NXT_BUTTON))
         element = self.driver.find_element(*ContactPageLocators.NXT_BUTTON).click()
         
-        radio1=self.driver.find_element(*DeliveryPageLocators.RADIO_DELIVERY)
+        radio1=self.driver.find_elements(*DeliveryPageLocators.RADIO_DELIVERY)
         if not (radio1.is_selected()):
             radio1.click()
-        WebDriverWait(self.driver, 20).until(self.driver.find_element(*DeliveryPageLocators.RADIO_SUBDELIVERY))
+        WebDriverWait(self.driver, 20)
         radio2=self.driver.find_element(*DeliveryPageLocators.RADIO_SUBDELIVERY).find_element_by_xpath('.//a')
         radio2.click()
         list = self.driver.find_element(*DeliveryPageLocators.RADIO_SUBDELIVERY).find_element_by_xpath('.//div/div[2]/ul/li[1]/a').click()
